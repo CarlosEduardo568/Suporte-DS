@@ -38,7 +38,7 @@ let categoriaAtual = 'todos';
 // ============================================================================
 function normalizarTexto(texto) {
   // TODO (PASSO 2): retorne o texto tratado
-  return texto.toLowerCase().trim();
+  return texto.toLowerCase().trim().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
 }
 
 
@@ -71,7 +71,30 @@ function normalizarTexto(texto) {
 // ============================================================================
 function aplicarFiltros() {
   // Escreva seu código aqui!
-}
+  const termoDigitado = normalizarTexto(campoBusca.value);
+  let quantidadeVisiveis = 0;
+
+  cartoesFaq.forEach((cartao) => {
+    const categorias = normalizarTexto(cartao.dataset.categoria || '');
+    const palavrasChave = normalizarTexto(cartao.dataset.palavrasChave || '');
+    const textoVisivel = normalizarTexto(cartao.dataset.textContent || '');
+
+    const combinaCategoria = 
+      categoriaAtual === 'todos' || categorias.includes(categoriaAtual)
+
+    const combinaBusca =
+    termoDigitado === '' ||
+    palavrasChave.includes(termoDigitado) ||
+    textoVisivel.includes(termoDigitado);
+
+    if (combinaCategoria && combinaBusca) {
+      cartao.classList.remove('oculto');
+      quantidadeVisiveis++;
+    } else {
+      cartao.classList.add('oculto');
+    }
+  })
+  }
 
 
 // ============================================================================
@@ -79,7 +102,7 @@ function aplicarFiltros() {
 // Escute o evento 'input' no campoBusca e chame a função aplicarFiltros
 // ============================================================================
 
-// TODO (PASSO 4): campoBusca.addEventListener('input', aplicarFiltros);
+campoBusca.addEventListener('input', aplicarFiltros);
 
 
 // ============================================================================
