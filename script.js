@@ -117,8 +117,24 @@ campoBusca.addEventListener('input', aplicarFiltros);
 // ============================================================================
 
 // TODO (PASSO 5): escreva a função selecionarCategoria e o clique nos botoesFiltro
+function selecionarCategoria(categoria) {
+  categoriaAtual = categoria;
+  rotuloFiltroAtivo.textContent = 
+    categoria === 'todos' ? 'TODOS' : `#${categoria.toUpperCase()}`;
 
+  botoesFiltro.forEach( (botao) => {
+    const estaAtivo = botao.dataset.filtro === categoria;
+    botao.classList.toggle('ativo', estaAtivo);
+  })
 
+  aplicarFiltros();
+}
+
+botoesFiltro.forEach( (botao) => {
+  botao.addEventListener('click', () => {
+    selecionarCategoria(botao.dataset.filtro);
+  });
+});
 // ============================================================================
 // AULA 2 - PASSO 6: Botões "Limpar", "Limpar busca e filtros" e Sugestões
 // - botaoLimpar: limpa campoBusca.value, dá foco e chama aplicarFiltros()
