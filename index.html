@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DevEd Hub // FAQ &amp; Guias Práticos de DS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Geist:wght@400;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Cabeçalho fixo -->
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <div class="brand">
+        <span class="brand__prompt" aria-hidden="true">&gt;_</span>
+        <span class="brand__title">DevEd Hub // Suporte DS</span>
+        <span class="badge--secondary brand__tag">Turmas 2º &amp; 3º Ano DS - SP</span>
+      </div>
+
+      <nav class="topbar__nav" aria-label="Navegação rápida">
+        <a href="#busca" class="nav-link">Buscar</a>
+        <a href="#guias" class="nav-link">Guias &amp; PDFs</a>
+        <button type="button" class="btn-shortcut" id="botao-atalho-busca" title="Focar busca">
+          <span>Pesquisar</span>
+          <kbd>/</kbd>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="ambient-glow ambient-glow--primary" aria-hidden="true"></div>
+    <div class="ambient-glow ambient-glow--secondary" aria-hidden="true"></div>
+
+    <div class="container">
+      <!-- Seção Hero -->
+      <section class="hero" id="busca">
+        <div class="hero__pill">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>PROJETO COOPERATIVO • 2º ANO (PDFs) &amp; 3º ANO (FRONT-END JS)</span>
+        </div>
+
+        <h1 class="hero__title">
+          Perguntas Frequentes &amp; Guias para Estudantes de DS
+        </h1>
+
+        <p class="hero__subtitle">
+          Digite sua dúvida abaixo ou filtre por categoria para ver o passo a passo rápido
+          e baixar os PDFs produzidos pela turma do <strong>2º ano de Desenvolvimento de Sistemas</strong>.
+        </p>
+
+        <!-- Barra de busca estilo terminal -->
+        <div class="search-box">
+          <span class="search-box__prompt" aria-hidden="true">&gt;_</span>
+          <input
+            type="text"
+            id="campo-busca"
+            class="search-box__input"
+            placeholder="Pesquise por vscode, atalhos, windows, @aluno, live server, terminal..."
+            autocomplete="off"
+            aria-label="Buscar nas dúvidas frequentes"
+          />
+          <button
+            type="button"
+            id="botao-limpar"
+            class="search-box__clear oculto"
+            aria-label="Limpar busca"
+          >
+            Limpar
+          </button>
+          <div class="search-box__keys" aria-hidden="true">
+            <kbd>Ctrl</kbd>
+            <span>+</span>
+            <kbd>K</kbd>
+          </div>
+        </div>
+
+        <!-- Filtros rápidos por categoria -->
+        <div class="filters" role="group" aria-label="Filtrar por categoria">
+          <button type="button" class="filtro-categoria ativo" data-filtro="todos">
+            // todos
+          </button>
+          <button type="button" class="filtro-categoria" data-filtro="vscode">
+            #vscode
+          </button>
+          <button type="button" class="filtro-categoria" data-filtro="atalhos">
+            #atalhos
+          </button>
+          <button type="button" class="filtro-categoria" data-filtro="email">
+            #email-aluno
+          </button>
+          <button type="button" class="filtro-categoria" data-filtro="lab">
+            #lab-terminal
+          </button>
+        </div>
+
+        <!-- Barra de status e contador dinâmico -->
+        <div class="status-bar">
+          <div class="status-bar__item">
+            <span class="dot dot--tertiary" aria-hidden="true"></span>
+            <span id="contador-resultados">Exibindo 6 de 6 guias</span>
+          </div>
+          <div class="status-bar__item status-bar__filter">
+            <span>Filtro ativo:</span>
+            <strong id="rotulo-filtro-ativo">TODOS</strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grade de Cartões FAQ + PDFs -->
+      <section class="faq-section" id="guias" aria-label="Lista de dúvidas frequentes">
+        <div class="faq-grid" id="grade-faq">
+
+          <!-- CARTÃO 1: Abrir pasta no VS Code -->
+          <article
+            class="cartao-faq"
+            data-categoria="vscode"
+            data-palavras-chave="abrir pasta projeto vscode vs code file open folder code ponto terminal diretorio raiz workspace"
+          >
+            <div class="cartao-faq__top">
+              <div class="tags">
+                <span class="tag tag--primary">#vscode</span>
+                <span class="tag tag--tertiary">iniciante</span>
+              </div>
+              <span class="card-code">AMB_01</span>
+            </div>
+
+            <h2 class="cartao-faq__title">
+              Como abrir uma pasta/projeto corretamente no VS Code?
+            </h2>
+
+            <p class="cartao-faq__summary">
+              Nunca abra apenas o arquivo <code>index.html</code> solto. Veja as 3 formas corretas de abrir a pasta raiz do projeto para o CSS, JS e Live Server funcionarem.
+            </p>
+
+            <button type="button" class="botao-acordeao" aria-expanded="false">
+              <span>Ver passo a passo rápido</span>
+              <span class="icone-acordeao" aria-hidden="true">+</span>
+            </button>
+
+            <div class="conteudo-acordeao oculto">
+              <ol class="steps-list">
+                <li><strong>Pelo menu:</strong> clique em <code>File &gt; Open Folder...</code> e selecione a pasta inteira do projeto.</li>
+                <li><strong>Por atalho:</strong> pressione <kbd>Ctrl</kbd> + <kbd>K</kbd> e depois <kbd>Ctrl</kbd> + <kbd>O</kbd>.</li>
+                <li><strong>Pelo terminal:</strong> entre na pasta do projeto e digite <code>code .</code> (o ponto significa pasta atual).</li>
+              </ol>
+              <div class="callout--tip">
+                <strong>[DICA]</strong> Se aparecer <em>"Do you trust the authors?"</em>, clique em <strong>Yes, I trust the authors</strong>.
+              </div>
+            </div>
+
+            <div class="cartao-faq__footer">
+              <span class="author">Autoria: <strong>Turma 2º A DS</strong></span>
+              <a href="pdfs/como-abrir-pasta-vscode.pdf" target="_blank" rel="noopener" class="btn-pdf">
+                Abrir PDF (.pdf)
+              </a>
+            </div>
+          </article>
+
+          <!-- CARTÃO 2: Principais atalhos do VS Code -->
+          <article
+            class="cartao-faq"
+            data-categoria="vscode atalhos"
+            data-palavras-chave="atalhos vscode vs code ide programar rapido duplicar linha multi cursor selecionar palavra formatar terminal ctrl shift p ctrl d alt shift"
+          >
+            <div class="cartao-faq__top">
+              <div class="tags">
+                <span class="tag tag--primary">#vscode</span>
+                <span class="tag tag--secondary">#atalhos</span>
+              </div>
+              <span class="card-code">HOTKEY_02</span>
+            </div>
+
+            <h2 class="cartao-faq__title">
+              Principais atalhos do VS Code para programar mais rápido
+            </h2>
+
+            <p class="cartao-faq__summary">
+              Domine os atalhos de teclado mais usados por devs: duplicar linha, múltiplos cursores, paleta de comandos e terminal integrado.
+            </p>
+
+            <button type="button" class="botao-acordeao" aria-expanded="false">
+              <span>Ver passo a passo rápido</span>
+              <span class="icone-acordeao" aria-hidden="true">+</span>
+            </button>
+
+            <div class="conteudo-acordeao oculto">
+              <ul class="shortcut-list">
+                <li>
+                  <span>Paleta de comandos</span>
+                  <span><kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>P</kbd></span>
+                </li>
+                <li>
+                  <span>Duplicar linha</span>
+                  <span><kbd>Alt</kbd> + <kbd>Shift</kbd> + <kbd>↓</kbd></span>
+                </li>
+                <li>
+                  <span>Multi-cursor (próxima igual)</span>
+                  <span><kbd>Ctrl</kbd> + <kbd>D</kbd></span>
+                </li>
+                <li>
+                  <span>Comentar / descomentar</span>
+                  <span><kbd>Ctrl</kbd> + <kbd>;</kbd></span>
+                </li>
+                <li>
+                  <span>Abrir/fechar terminal</span>
+                  <span><kbd>Ctrl</kbd> + <kbd>'</kbd></span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="cartao-faq__footer">
+              <span class="author">Autoria: <strong>Turma 2º B DS</strong></span>
+              <a href="pdfs/atalhos-vscode.pdf" target="_blank" rel="noopener" class="btn-pdf">
+                Abrir PDF (.pdf)
+              </a>
+            </div>
+          </article>
+
+          <!-- CARTÃO 3: Principais atalhos do Windows -->
+          <article
+            class="cartao-faq"
+            data-categoria="atalhos"
+            data-palavras-chave="atalhos windows laboratorio produtividade dividir tela split screen historico copiar colar clipboard print captura tela win v win shift s alt tab teclado abnt2"
+          >
+            <div class="cartao-faq__top">
+              <div class="tags">
+                <span class="tag tag--secondary">#atalhos</span>
+                <span class="tag tag--tertiary">windows</span>
+              </div>
+              <span class="card-code">WIN_03</span>
+            </div>
+
+            <h2 class="cartao-faq__title">
+              Principais atalhos do Windows no laboratório
+            </h2>
+
+            <p class="cartao-faq__summary">
+              Como dividir a tela entre VS Code e navegador, usar o histórico de copiar/colar, tirar print seletivo de erros e corrigir teclado desconfigurado.
+            </p>
+
+            <button type="button" class="botao-acordeao" aria-expanded="false">
+              <span>Ver passo a passo rápido</span>
+              <span class="icone-acordeao" aria-hidden="true">+</span>
+            </button>
+
+            <div class="conteudo-acordeao oculto">
+              <ul class="shortcut-list">
+                <li>
+                  <span>Dividir tela (VS Code + Navegador)</span>
+                  <span><kbd>Win</kbd> + <kbd>←</kbd> / <kbd>→</kbd></span>
+                </li>
+                <li>
+                  <span>Histórico de área de transferência</span>
+                  <span><kbd>Win</kbd> + <kbd>V</kbd></span>
+                </li>
+                <li>
+                  <span>Print recortado de erro</span>
+                  <span><kbd>Win</kbd> + <kbd>Shift</kbd> + <kbd>S</kbd></span>
+                </li>
+                <li>
+                  <span>Alternar janelas rápido</span>
+                  <span><kbd>Alt</kbd> + <kbd>Tab</kbd></span>
+                </li>
+                <li>
+                  <span>Trocar idioma do teclado (ABNT2)</span>
+                  <span><kbd>Alt</kbd> + <kbd>Shift</kbd></span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="cartao-faq__footer">
+              <span class="author">Autoria: <strong>Turma 2º B DS</strong></span>
+              <a href="pdfs/atalhos-windows.pdf" target="_blank" rel="noopener" class="btn-pdf">
+                Abrir PDF (.pdf)
+              </a>
+            </div>
+          </article>
+
+          <!-- CARTÃO 4: Conta @aluno.educacao.sp.gov.br -->
+          <article
+            class="cartao-faq"
+            data-categoria="email"
+            data-palavras-chave="email conta institucional aluno educacao sp gov br login logar senha sed secretaria escolar digital ra microsoft teams google classroom sala de aula github student"
+          >
+            <div class="cartao-faq__top">
+              <div class="tags">
+                <span class="tag tag--tertiary">#email-aluno</span>
+                <span class="tag tag--primary">sed</span>
+              </div>
+              <span class="card-code">AUTH_04</span>
+            </div>
+
+            <h2 class="cartao-faq__title">
+              Como logar na conta @aluno.educacao.sp.gov.br?
+            </h2>
+
+            <p class="cartao-faq__summary">
+              Entenda o padrão do e-mail institucional com o seu RA, como fazer o primeiro acesso no Google/Teams e como recuperar a senha na SED.
+            </p>
+
+            <button type="button" class="botao-acordeao" aria-expanded="false">
+              <span>Ver passo a passo rápido</span>
+              <span class="icone-acordeao" aria-hidden="true">+</span>
+            </button>
+
+            <div class="conteudo-acordeao oculto">
+              <p class="code-box">
+                0000 + [RA_com_digito] + sp@aluno.educacao.sp.gov.br
+              </p>
+              <ol class="steps-list">
+                <li>Acesse <code>sed.educacao.sp.gov.br</code> para consultar seu RA ou redefinir senha.</li>
+                <li>Em <strong>"Esqueci a Senha"</strong>, escolha o perfil <strong>Aluno</strong> e informe RA, data de nascimento e nome da mãe.</li>
+                <li>Use o e-mail completo para entrar no <strong>Google Classroom</strong>, <strong>Microsoft Teams</strong> e solicitar o <strong>GitHub Student Pack</strong>.</li>
+              </ol>
+            </div>
+
+            <div class="cartao-faq__footer">
+              <span class="author">Autoria: <strong>Turma 2º A DS</strong></span>
+              <a href="pdfs/conta-aluno-educacao-sp.pdf" target="_blank" rel="noopener" class="btn-pdf">
+                Abrir PDF (.pdf)
+              </a>
+            </div>
+          </article>
+
+          <!-- CARTÃO 5: Rodar HTML com Live Server -->
+          <article
+            class="cartao-faq"
+            data-categoria="vscode"
+            data-palavras-chave="vscode vs code html rodar navegador preview live server go live extensao porta 5500 recarregar automatico front-end css js"
+          >
+            <div class="cartao-faq__top">
+              <div class="tags">
+                <span class="tag tag--primary">#vscode</span>
+                <span class="tag tag--secondary">front-end</span>
+              </div>
+              <span class="card-code">WEB_05</span>
+            </div>
+
+            <h2 class="cartao-faq__title">
+              Como rodar meu site HTML no navegador com Live Server?
+            </h2>
+
+            <p class="cartao-faq__summary">
+              Chega de ficar apertando F5 o tempo todo. Instale o Live Server no VS Code e veja suas alterações em tempo real a cada Ctrl + S.
+            </p>
+
+            <button type="button" class="botao-acordeao" aria-expanded="false">
+              <span>Ver passo a passo rápido</span>
+              <span class="icone-acordeao" aria-hidden="true">+</span>
+            </button>
+
+            <div class="conteudo-acordeao oculto">
+              <ol class="steps-list">
+                <li>Abra a aba de extensões com <kbd>Ctrl</kbd> + <kbd>Shift</kbd> + <kbd>X</kbd>.</li>
+                <li>Pesquise por <strong>Live Server</strong> (autor: <em>Ritwick Dey</em>) e clique em <strong>Install</strong>.</li>
+                <li>Clique com o botão direito no arquivo <code>index.html</code> e selecione <strong>Open with Live Server</strong> (ou clique em <code>Go Live</code> no canto inferior direito).</li>
+              </ol>
+            </div>
+
+            <div class="cartao-faq__footer">
+              <span class="author">Autoria: <strong>Turma 2º B DS</strong></span>
+              <a href="pdfs/live-server-vscode.pdf" target="_blank" rel="noopener" class="btn-pdf">
+                Abrir PDF (.pdf)
+              </a>
+            </div>
+          </article>
+
+          <!-- CARTÃO 6: Erro no PowerShell / Terminal no Laboratório -->
+          <article
+            class="cartao-faq"
+            data-categoria="lab"
+            data-palavras-chave="vscode vs code terminal powershell erro permissao script executionpolicy pssecurityexception git bash cmd travado restrito laboratorio"
+          >
+            <div class="cartao-faq__top">
+              <div class="tags">
+                <span class="tag tag--error">#lab-terminal</span>
+                <span class="tag tag--tertiary">git bash</span>
+              </div>
+              <span class="card-code">FIX_06</span>
+            </div>
+
+            <h2 class="cartao-faq__title">
+              Erro de permissão no PowerShell ou terminal travado no lab
+            </h2>
+
+            <p class="cartao-faq__summary">
+              Apareceu <code>PSSecurityException</code> ou <em>"running scripts is disabled"</em>? Veja como trocar o terminal para Git Bash ou liberar o escopo do usuário.
+            </p>
+
+            <button type="button" class="botao-acordeao" aria-expanded="false">
+              <span>Ver passo a passo rápido</span>
+              <span class="icone-acordeao" aria-hidden="true">+</span>
+            </button>
+
+            <div class="conteudo-acordeao oculto">
+              <ol class="steps-list">
+                <li><strong>Opção mais rápida:</strong> no terminal do VS Code, clique na setinha ao lado do botão <code>+</code> e escolha <strong>Git Bash</strong> ou <strong>Command Prompt (cmd)</strong>.</li>
+                <li><strong>Opção no PowerShell:</strong> execute o comando abaixo (não exige administrador):</li>
+              </ol>
+              <p class="code-box">
+                Set-ExecutionPolicy -Scope CurrentUser RemoteSigned
+              </p>
+            </div>
+
+            <div class="cartao-faq__footer">
+              <span class="author">Autoria: <strong>Turma 2º A DS</strong></span>
+              <a href="pdfs/terminal-powershell-lab.pdf" target="_blank" rel="noopener" class="btn-pdf">
+                Abrir PDF (.pdf)
+              </a>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Estado vazio (exibido dinamicamente via JS quando não há resultados) -->
+        <div class="empty-state oculto" id="estado-vazio" role="status" aria-live="polite">
+          <div class="empty-state__icon" aria-hidden="true">?_</div>
+          <h3 class="empty-state__title">Nenhuma dúvida encontrada</h3>
+          <p class="empty-state__text">
+            Tente buscar por termos como
+            <button type="button" class="botao-sugestao" data-sugestao="vscode">vscode</button>,
+            <button type="button" class="botao-sugestao" data-sugestao="atalhos">atalhos</button> ou
+            <button type="button" class="botao-sugestao" data-sugestao="aluno">aluno</button>.
+          </p>
+          <button type="button" class="btn-reset" id="botao-resetar-filtros">
+            Limpar busca e filtros
+          </button>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>DevEd Hub // FAQ dos Estudantes de Desenvolvimento de Sistemas</p>
+      <p class="footer__meta">Conteúdo: 2º Ano DS • Front-End &amp; Busca Dinâmica: 3º Ano DS</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
