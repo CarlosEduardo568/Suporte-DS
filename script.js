@@ -135,6 +135,72 @@ botoesFiltro.forEach( (botao) => {
     selecionarCategoria(botao.dataset.filtro);
   });
 });
+
+// 6. Botões de limpar busca e resetar filtros
+botaoLimpar.addEventListener('click', () => {
+  campoBusca.value = '';
+  campoBusca.focus();
+  aplicarFiltros();
+});
+
+botaoResetarFiltros.addEventListener('click', () => {
+  campoBusca.value = '';
+  selecionarCategoria('todos');
+  campoBusca.focus();
+});
+
+// Sugestões clicáveis quando nenhum resultado é encontrado
+botoesSugestao.forEach((botao) => {
+  botao.addEventListener('click', () => {
+    campoBusca.value = botao.dataset.sugestao;
+    selecionarCategoria('todos');
+    campoBusca.focus();
+  });
+});
+
+// 7. abrir e fechar o passo a passo de cada cartão
+botoesAcordeao.forEach((botao) => {
+  botao.addEventListener('click', () => {
+    const cartao = botao.closest('.cartao-faq');
+    const conteudo = cartao.querySelector('.conteudo-acordeao');
+    const icone = botao.querySelector('.icone-acordeao');
+    const estaAberto = botao.getAttribute('aria-expanded') === 'true';
+
+    botao.setAttribute('aria-expanded', String(!estaAberto));
+    conteudo.classList.toggle('oculto', estaAberto);
+    cartao.classList.toggle('aberto', !estaAberto);
+    icone.textContent = estaAberto ? '+' : '−';
+  });
+});
+
+// 8. Atalhos de teclado: '/' ou 'Ctrl + K' focam a busca; 'Escape' limpa
+function focarBusca() {
+  campoBusca.focus();
+  campoBusca.select();
+}
+
+botaoAtalhoBusca.addEventListener('click', focarBusca);
+
+document.addEventListener('keydown', (evento) => {
+  const digitandoNaBusca = document.activeElement === campoBusca;
+
+  if (
+    (evento.key === '/' && !digitandoNaBusca) ||
+    ((evento.ctrlKey || evento.metaKey) && evento.key.toLowerCase() === 'k')
+  ) {
+    evento.preventDefault();
+    focarBusca();
+  }
+
+  if (evento.key === 'Escape' && digitandoNaBusca) {
+    campoBusca.value = '';
+    aplicarFiltros();
+    campoBusca.blur();
+  }
+});
+
+// Executa uma vez ao abrir a página para garantir o estado inicial correto
+aplicarFiltros();
 // ============================================================================
 // AULA 2 - PASSO 6: Botões "Limpar", "Limpar busca e filtros" e Sugestões
 // - botaoLimpar: limpa campoBusca.value, dá foco e chama aplicarFiltros()
